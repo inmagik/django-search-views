@@ -3,7 +3,7 @@
 .pydevproject
 .coverage
 .DS_Store
-django_search_views.egg-info/
+django_searchlist_views.egg-info/
 htmlcov/
 build/
 docs/_build/
