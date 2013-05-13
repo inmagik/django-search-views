@@ -27,7 +27,7 @@ tbw
 The following code sets up model, form and view for displaying an "Actors List".
 
 
-Example models.py:
+models.py:
 
 
     class Actor(models.Model):
@@ -38,7 +38,7 @@ Example models.py:
         
         
 
-Example forms.py
+forms.py
     
     from .models import Actor
     from django import forms
@@ -67,7 +67,7 @@ Example forms.py
                       
 
 
-Example views.py
+views.py
 
     from .model import Actor
     from .forms import ActorSearchForm
@@ -87,7 +87,7 @@ Example views.py
         }
         
         
-Example view template:
+view template "actors/actors_list.html":
     
     {% extends "base.html" %}
     
