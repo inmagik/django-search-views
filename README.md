@@ -12,6 +12,19 @@ Features:
 
 This is a work in progress!
 
+## Installation
+
+    python setup.py install
+
+## Usage
+
+### SearchListView
+
+
+## Example
+
+The following code sets up model, form and view for displaying an "Actors List".
+
 
 Example models.py:
 
@@ -27,6 +40,7 @@ Example models.py:
 Example forms.py
     
     from .models import Actor
+    from django import forms
     class ActorSearchForm(forms.Form):
         search_text =  forms.CharField(
                         required = False,
@@ -70,3 +84,44 @@ Example views.py
             'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },            
     
         }
+        
+        
+Example view template:
+    
+    {% extends "base.html" %}
+    
+    
+    {% block content%}
+    
+    <div class="container">
+    
+        <h2>Actors list</h2>
+        
+        <form class="form-inline" action="" method="GET">
+            {{ form }}
+            <button class="btn" type="submit">Search</button>
+            </fieldset>
+        </form>
+    
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>        
+            </tr>
+            {% for object in object_list %}
+            <tr>
+                <td>{{object.name}}</td>
+                <td>{{object.surname}}</td>
+                <td>{{object.age}}</td>  
+            </tr>
+            {% endfor %}
+        </table>
+    
+        {% if is_paginated %}
+            {% include "paginator.html" %}
+        {% endif %}
+    
+    </div>
+    
+    {% endblock %}
