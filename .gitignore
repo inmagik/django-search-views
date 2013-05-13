@@ -1,0 +1,12 @@
+*.pyc
+.project
+.pydevproject
+.coverage
+.DS_Store
+django_search_views.egg-info/
+htmlcov/
+build/
+docs/_build/
+dist/
+nosetests.xml
+
