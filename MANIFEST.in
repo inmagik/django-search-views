@@ -1,0 +1,6 @@
+include LICENSE.txt
+include README.txt
+recursive-include search_views *.py
+recursive-include search_views/tests *.py
+recursive-include search_views/tests/templates *.html
+recursive-include search_views/tests/templates/search_views *.html

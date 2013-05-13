@@ -8,7 +8,7 @@ setup(
         'Django >=1.3',
     ],
     description="Search List class-based views for Django",
-    long_description=open('README.rst', 'r').read(),
+    long_description=open('README.md', 'r').read(),
     license="MIT",
     author="Mauro Bianchi",
     author_email="bianchimro@gmail.com",
