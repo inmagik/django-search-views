@@ -18,6 +18,8 @@ This is a work in progress!
 
 ## Usage
 
+**Important**: API has changed since v. 0.1.0, in particular filters are now configured in their own class derived from `searchlist_views.filters.BaseFilter`.
+
 ### SearchListView
 tbw
 
@@ -72,7 +74,7 @@ views.py
     from .model import Actor
     from .forms import ActorSearchForm
     from searchlist_views.search import SearchListView
-    from searchlist_views.filters import ActorsFilter
+    from searchlist_views.filters import BaseFilter
 
     class ActorsFilter(BaseFilter):
         search_fields = {
