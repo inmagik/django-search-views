@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-searchlist-views',
-    version='0.0.1',
+    version='0.1.0',
     url='https://github.com/bianchimro/django-searchlist-views',
     install_requires=[
         'Django >=1.3',
