@@ -71,13 +71,10 @@ views.py
 
     from .model import Actor
     from .forms import ActorSearchForm
-    from search_views import SearchListView
-    
-    class ActorsSearchList(SearchListView):
-        model = Actor
-        paginate_by = 30
-        template_name = "actors/actors_list.html"
-        form_class = ActorSearchForm
+    from searchlist_views.search import SearchListView
+    from searchlist_views.filters import ActorsFilter
+
+    class ActorsFilter(BaseFilter):
         search_fields = {
             'search_text' : ['name', 'surname'],
             'search_age_exact' : { 'operator' : '__exact', 'fields' : ['age'] },
@@ -85,6 +82,13 @@ views.py
             'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },            
     
         }
+    
+    class ActorsSearchList(SearchListView):
+        model = Actor
+        paginate_by = 30
+        template_name = "actors/actors_list.html"
+        form_class = ActorSearchForm
+        filter_clas
         
         
 view template "actors/actors_list.html":
