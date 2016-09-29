@@ -7,7 +7,7 @@ Features:
 * searching multiple fields
 * set filtering operators
 * set fixed filters
-* pass in lists as fiters 
+* pass in lists as fiters
 
 
 This is a work in progress!
@@ -36,21 +36,21 @@ models.py:
         name = models.CharField(max_length=32)
         surname = models.CharField(max_length=32)
         age = models.IntegerField()
-        
-        
-        
+
+
+
 
 forms.py
-    
+
     from .models import Actor
     from django import forms
     class ActorSearchForm(forms.Form):
         search_text =  forms.CharField(
                         required = False,
-                        label='Search name or surname!', 
+                        label='Search name or surname!',
                         widget=forms.TextInput(attrs={'placeholder': 'search here!'})
                       )
-                      
+
         search_age_exact = forms.IntegerField(
                         required = False,
                         label='Search age (exact match)!'
@@ -66,7 +66,7 @@ forms.py
                         required = False,
                         label='Max age'
                       )
-                      
+
 
 
 views.py
@@ -82,34 +82,34 @@ views.py
             'search_age_exact' : { 'operator' : '__exact', 'fields' : ['age'] },
             'search_age_min' : { 'operator' : '__gte', 'fields' : ['age'] },
             'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },            
-    
+
         }
-    
+
     class ActorsSearchList(SearchListView):
         model = Actor
         paginate_by = 30
         template_name = "actors/actors_list.html"
         form_class = ActorSearchForm
         filter_clas
-        
-        
+
+
 view template "actors/actors_list.html":
-    
+
     {% extends "base.html" %}
-    
-    
+
+
     {% block content%}
-    
+
     <div class="container">
-    
+
         <h2>Actors list</h2>
-        
+
         <form class="form-inline" action="" method="GET">
             {{ form }}
             <button class="btn" type="submit">Search</button>
             </fieldset>
         </form>
-    
+
         <table class="table table-bordered table-condensed">
             <tr>
                 <th>Name</th>
@@ -124,11 +124,11 @@ view template "actors/actors_list.html":
             </tr>
             {% endfor %}
         </table>
-    
+
         {% if is_paginated %}
             {% include "paginator.html" %}
         {% endif %}
-    
+
     </div>
-    
+
     {% endblock %}

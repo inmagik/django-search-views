@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name='django-searchlist-views',
-    version='0.1.0',
+    version='0.2.0',
     url='https://github.com/bianchimro/django-searchlist-views',
     install_requires=[
-        'Django >=1.3',
+        'Django >=1.8',
     ],
     description="Search List class-based views for Django",
     long_description=open('README.md', 'r').read(),
