@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: django-searchlist-views
+pages:
+  - django-searchlist-views: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+theme: readthedocs

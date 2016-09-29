@@ -90,7 +90,7 @@ views.py
         paginate_by = 30
         template_name = "actors/actors_list.html"
         form_class = ActorSearchForm
-        filter_clas
+        filter_class = ActorsFilter
 
 
 view template "actors/actors_list.html":

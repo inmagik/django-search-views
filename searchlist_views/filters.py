@@ -56,7 +56,7 @@ def build_q(fields_dict, params_dict, request=None):
                         or_query = or_query | Q(**filter_dict)
                 else:
                     #TODO: this is a hack for using request data in custom_query
-                    #it would be better to pass ALSO the request to custom_query_method 
+                    #it would be better to pass ALSO the request to custom_query_method
                     if not request:
                         cf = custom_query_method(model_field, request_field_value, params_dict)
                     else:
@@ -85,21 +85,16 @@ def build_q(fields_dict, params_dict, request=None):
 
 
 class BaseFilter(object):
+    """
+    Base class providing an interface for mapping a form to a query
+    """
     search_fields  = {}
-    
-    # Set to False with RawQuerySetz
-    apply_distinct = True
 
-    order_field = 'query_order'
-    allowed_orderings = []
-    max_num_orderings = 0
-    
 
     @classmethod
     def build_q(cls, params, request=None):
         return build_q(cls.get_search_fields(), params, request)
 
-        
 
     @classmethod
     def get_search_fields(cls):
@@ -111,6 +106,3 @@ class BaseFilter(object):
             if hasattr(klass, 'search_fields'):
                 sfdict.update(klass.search_fields)
         return sfdict
-
-
-    

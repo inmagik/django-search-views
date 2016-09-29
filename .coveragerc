@@ -1,0 +1,4 @@
+# .coveragerc
+[report]
+show_missing = True
+

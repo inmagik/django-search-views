@@ -1,9 +1,7 @@
 from django.test import TestCase
-from django.core.management import call_command
 from django.db import models
-from django.apps import apps as cache
 from django.conf import settings
-from searchlist_views.filters import build_q
+from searchlist_views.filters import build_q, BaseFilter
 from django.db.models import Q
 
 from .models import SomeModel
@@ -192,3 +190,19 @@ class TestFilter(TestCase):
         q = build_q(filters_config, params)
         objs = self.test_model.objects.filter(q)
         self.assertEquals(objs.count(), 20)
+
+
+
+    def test_base_filter(self):
+        class B(BaseFilter):
+            search_fields = {
+                "search" : {
+                    "operator" : "__lte",
+                    "fields" : ["a_int"]
+                }
+            }
+
+        params  = { "search" : 5 }
+        q = B.build_q(params)
+        objs = self.test_model.objects.filter(q)
+        self.assertEquals(objs.count(), 60)

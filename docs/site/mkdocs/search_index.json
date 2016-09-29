@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to django-searchlist-views", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#welcome-to-django-searchlist-views", 
+            "text": "", 
+            "title": "Welcome to django-searchlist-views"
+        }
+    ]
+}
