@@ -1,0 +1,4 @@
+django>=1.8.0
+coverage
+django-nose==1.4.4
+# Additional test requirements go here

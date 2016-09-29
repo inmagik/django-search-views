@@ -1,10 +1,12 @@
 from django.test import TestCase
 from django.core.management import call_command
 from django.db import models
-from django.db.models import loading
+from django.apps import apps as cache
 from django.conf import settings
-from .filters import build_q
+from searchlist_views.filters import build_q
 from django.db.models import Q
+
+from .models import SomeModel
 
 # Create your tests here.
 class TestFilter(TestCase):
@@ -14,25 +16,7 @@ class TestFilter(TestCase):
 
         super(TestFilter, cls).setUpClass()
 
-        class TestModel(models.Model):
-            a_int = models.IntegerField(null=True, blank=True)
-            b_char = models.CharField(max_length=200, null=True, blank=True)
-            c_text = models.TextField(null=True, blank=True)
-            d_bool = models.NullBooleanField(null=True, blank=True)
-
-            def __unicode__(self):
-                return u'%d-%s' %( self.a_int, self.b_char)
-
-            class Meta:
-                # Test runner returns error if this is not specified
-                app_label = 'filter_utils'
-
-        #to use syncdb and create tables we must add app to installed apps
-        setattr(settings, 'INSTALLED_APPS', ['filter_utils']+list(settings.INSTALLED_APPS))
-        loading.cache.loaded = False
-        call_command('syncdb', verbosity=1)
-
-        cls.test_model = TestModel
+        cls.test_model = SomeModel
 
         #prepopulating with predictable records
         contents  = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
@@ -42,7 +26,7 @@ class TestFilter(TestCase):
             b_char = contents[idx]
             c_text = contents[9-idx]
             d_bool = bool(i < 50)
-            instance = TestModel.objects.create(a_int=a_int, b_char=b_char, c_text=c_text, d_bool=d_bool)
+            instance = SomeModel.objects.create(a_int=a_int, b_char=b_char, c_text=c_text, d_bool=d_bool)
 
 
     def test_build_q_simple_field(self):
