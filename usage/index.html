@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Usage - django-searchlist-views</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Usage";
+    var mkdocs_page_input_path = "usage.md";
+    var mkdocs_page_url = "/usage/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> django-searchlist-views</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">django-searchlist-views</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Usage</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#usage">Usage</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-searchlist_viewsviewssearchlistview">Using searchlist_views.views.SearchListView</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-searchlist_viewsfiltersbasefilter">class searchlist_views.filters.BaseFilter</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-searchlist_viewsviewssearchlistview">class searchlist_views.views.SearchListView</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">django-searchlist-views</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="usage">Usage</h1>
+<h2 id="using-searchlist_viewsviewssearchlistview">Using <code>searchlist_views.views.SearchListView</code></h2>
+<p><code>searchlist_views.views.SearchListView</code> is a class-based view derived from <a href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-display/#django.views.generic.list.ListView">django.views.generic.list.ListView</a> that you can inherit in your application's views to get the search functionalities.</p>
+<p>Your views, as a descendant of <code>django.views.generic.list.ListView</code>, must be configured by providing
+ <code>template_name</code>, a <code>model</code> or <code>queryset</code> property or a <code>get_queryset_method</code>. See the related django docs for more details.</p>
+<p>You will also need to define:</p>
+<ul>
+<li>the <code>form_class</code> attribute, that specifies the class derived from <code>django.forms.Form</code> that will be used to get a form instance, that will available via the <code>form</code> context variable in your template.</li>
+<li>the <code>filter_class</code> attribute, that specifies the class derived from <code>searchlist_views.filters.BaseFilter</code> used to map the form fields to the model properties and lookup methods.</li>
+</ul>
+<p>Here's an example definition of a view:</p>
+<pre><code>from .models import Actor
+from .forms import ActorSearchForm
+from searchlist_views.search import SearchListView
+
+class ActorsSearchList(SearchListView):
+    # regular django.views.generic.list.ListView configuration
+    model = Actor
+    paginate_by = 30
+    template_name = &quot;actors/actors_list.html&quot;
+
+    # additional configuration for SearchListView
+    form_class = ActorSearchForm
+    filter_class = ActorsFilter
+</code></pre>
+
+<p>The <code>filter_class</code> is resposible of mapping the fields defined in your form to<br />
+filter that will be performed on the base queryset. This is done by providing a subclass
+of <code>searchlist_views.filters.BaseFilter</code>.</p>
+<h2 id="class-searchlist_viewsfiltersbasefilter">class <code>searchlist_views.filters.BaseFilter</code></h2>
+<p>queries generated by different search_fields are ANDed
+if a search field is defined for more than one field, are put together with OR</p>
+<h2 id="class-searchlist_viewsviewssearchlistview">class <code>searchlist_views.views.SearchListView</code></h2>
+<p><code>search_fields</code> attribute, that must be set to a python dictionary, where:</p>
+<ul>
+<li><strong>keys</strong> map to the fields of your form class.</li>
+<li><strong>values</strong> are either:<ul>
+<li>a list of field names of your model. In this case a simple text search is performed.</li>
+<li>
+<p>a configuration dictionary that specifies</p>
+<ul>
+<li><code>fields</code></li>
+<li>
+<p><code>operator</code></p>
+</li>
+<li>
+<p><code>fixed_filters</code></p>
+</li>
+<li><code>custom_query</code></li>
+<li><code>value_mapper</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Let's explore all the options</p>
+<pre><code>from .models import Actor
+from .forms import ActorSearchForm
+from searchlist_views.search import SearchListView
+from searchlist_views.filters import BaseFilter
+
+class ActorsFilter(BaseFilter):
+    search_fields = {
+        'search_text' : ['name', 'surname'],
+        'search_age_exact' : { 'operator' : '__exact', 'fields' : ['age'] },
+        'search_age_min' : { 'operator' : '__gte', 'fields' : ['age'] },
+        'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },  
+    }
+
+class ActorsSearchList(SearchListView):
+    model = Actor
+    paginate_by = 30
+    template_name = &quot;actors/actors_list.html&quot;
+    form_class = ActorSearchForm
+    filter_class = ActorsFilter
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
