@@ -132,3 +132,9 @@ view template "actors/actors_list.html":
     </div>
 
     {% endblock %}
+
+
+
+# Development
+
+This project is maintained by [Inmagik](https://www.inmagik.com), suggestions and pull requests are welcome.
