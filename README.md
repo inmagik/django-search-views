@@ -14,7 +14,16 @@ This is a work in progress!
 
 ## Installation
 
+From pypi:
+
+    pip install django-search-views
+
+
+From source:
+
+
     python setup.py install
+    
 
 ## Usage
 
