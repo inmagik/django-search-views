@@ -1,16 +1,16 @@
 # django-searchlist-views
 
 This package provides a Django class-based view used for showing a list of objects with a search form.
+Full documentation at (http://inmagik.github.io/django-search-views/).
 
 Features:
 
-* searching multiple fields
-* set filtering operators
-* set fixed filters
-* pass in lists as fiters
+- allows searching multiple fields
+- supports pagination
+- set filtering operators for each field
+- set fixed filters
+- use lists of values for filters
 
-
-This is a work in progress!
 
 ## Installation
 
@@ -23,7 +23,7 @@ From source:
 
 
     python setup.py install
-    
+
 
 ## Usage
 
