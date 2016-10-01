@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Actors list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Actors list</h2>
+
+      <div class="panel">
+        <div class="panel-body">
+          <form class="form" action="" method="get">
+            {{form.as_p}}
+            <a class="btn btn-default" href="{% url 'actors' %}">Reset</a>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+
+      </div>
+
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Age
+          </th>
+        </tr>
+        {% for actor in object_list %}
+        <tr>
+          <td>
+            {{actor.name}} {{actor.surname}}
+          </td>
+          <td>
+            {{actor.age}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+    </div>
+  </body>
+</html>
