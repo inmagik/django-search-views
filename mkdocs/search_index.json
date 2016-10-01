@@ -27,12 +27,12 @@
         }, 
         {
             "location": "/installation/", 
-            "text": "Installation", 
+            "text": "Installation\n\n\nFrom pypi:\n\n\npip install django-search-views\n\n\n\n\nfrom source code:\n\n\npython setup.py install", 
             "title": "Installation"
         }, 
         {
             "location": "/installation/#installation", 
-            "text": "", 
+            "text": "From pypi:  pip install django-search-views  from source code:  python setup.py install", 
             "title": "Installation"
         }, 
         {
