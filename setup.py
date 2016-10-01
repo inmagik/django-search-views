@@ -3,12 +3,12 @@ from setuptools import setup
 setup(
     name='django-search-views',
     version='0.2.0',
-    url='https://github.com/bianchimro/django-searchlist-views',
+    url='https://github.com/inmagik/django-search-views',
     install_requires=[
         'Django >=1.8',
     ],
     description="Search List class-based views for Django",
-    long_description=open('README.md', 'r').read(),
+    long_description=open('README.rst', 'r').read(),
     license="MIT",
     author="Mauro Bianchi",
     author_email="bianchimro@gmail.com",
