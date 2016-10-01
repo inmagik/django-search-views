@@ -89,3 +89,8 @@ class ActorsSearchList(SearchListView):
 ```
 
 See all the details in the [usage](usage.md) section.
+
+
+# License and development
+
+This project is MIT licensed and maintained by [Inmagik](https://www.inmagik.com), suggestions and pull requests are welcome via the [Github project page](https://github.com/inmagik/django-search-views/issues).

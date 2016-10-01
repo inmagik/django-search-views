@@ -135,6 +135,6 @@ view template "actors/actors_list.html":
 
 
 
-# Development
+# License and development
 
-This project is maintained by [Inmagik](https://www.inmagik.com), suggestions and pull requests are welcome.
+This project is MIT licensed and maintained by [Inmagik](https://www.inmagik.com), suggestions and pull requests are welcome via the [Github project page](https://github.com/inmagik/django-search-views/issues)
