@@ -88,4 +88,4 @@ class ActorsSearchList(SearchListView):
   filter_class = ActorsFilter
 ```
 
-All the details
+See all the details in the [usage](usage.md) section.
