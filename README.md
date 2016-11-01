@@ -151,7 +151,7 @@ view template "actors/actors_list.html":
 
 ### 0.2.0
 
-* filters are now configured in their own class derived from `search_views.filters.BaseFilter`.
+* filters are now configured in their own class derived from `searchlist_views.filters.BaseFilter`.
 
 ### 0.3.0
 
