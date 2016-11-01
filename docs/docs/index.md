@@ -1,4 +1,4 @@
-# django-searchlist-views
+# django-search-views
 
 This package provides a Django class-based view used for showing a list of objects with a search form.
 

@@ -1,4 +1,4 @@
-site_name: django-searchlist-views
+site_name: django-search-views
 pages:
   - django-searchlist-views: index.md
   - Installation: installation.md
