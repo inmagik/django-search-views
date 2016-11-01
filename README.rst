@@ -1,5 +1,5 @@
-django-searchlist-views
-=======================
+django-search-views
+===================
 
 This package provides a Django class-based view used for showing a list
 of objects with a search form.
@@ -98,7 +98,7 @@ views.py
             'search_text' : ['name', 'surname'],
             'search_age_exact' : { 'operator' : '__exact', 'fields' : ['age'] },
             'search_age_min' : { 'operator' : '__gte', 'fields' : ['age'] },
-            'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },            
+            'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },
 
         }
 
@@ -132,13 +132,13 @@ view template "actors/actors\_list.html":
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Age</th>        
+                <th>Age</th>
             </tr>
             {% for object in object_list %}
             <tr>
                 <td>{{object.name}}</td>
                 <td>{{object.surname}}</td>
-                <td>{{object.age}}</td>  
+                <td>{{object.age}}</td>
             </tr>
             {% endfor %}
         </table>
