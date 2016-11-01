@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.db import models
 from django.conf import settings
-from searchlist_views.views import SearchListView
+from search_views.views import SearchListView
 from django.db.models import Q
 
 from .models import SomeModel

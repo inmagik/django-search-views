@@ -11,7 +11,7 @@ Think of it as an extension of django's [django.views.generic.list.ListView](htt
 - pagination
 - set filtering operators
 - set fixed filters
-- pass in lists as fiters
+- pass in lists as filters
 
 
 ## A quick example.
@@ -57,17 +57,17 @@ class ActorSearchForm(forms.Form):
     )
 ```
 
-Now, using `django-searchlist-views` API we can:
+Now, using `django-search-views` API we can:
 
 - define the mapping between the form fields and the model fields, and the lookups
-used for searching model instances. This is done by writing a subclass of `searchlist_views.filters.BaseFilter`
-- define the actual view based on `searchlist_views.views.SearchListView` class.
+used for searching model instances. This is done by writing a subclass of `search_views.filters.BaseFilter`
+- define the actual view based on `search_views.views.SearchListView` class.
 
 ```
 from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
-from searchlist_views.filters import BaseFilter
+from search_views.search import SearchListView
+from search_views.filters import BaseFilter
 
 class ActorsFilter(BaseFilter):
     search_fields = {

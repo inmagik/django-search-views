@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.db import models
 from django.conf import settings
-from searchlist_views.filters import build_q, BaseFilter
+from search_views.filters import build_q, BaseFilter
 from django.db.models import Q
 
 from .models import SomeModel

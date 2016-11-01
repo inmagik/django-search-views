@@ -2,16 +2,16 @@ django-search-views
 ===================
 
 This package provides a Django class-based view used for showing a list
-of objects with a search form.
+of objects with a search form. Full documentation at
+(http://inmagik.github.io/django-search-views/).
 
 Features:
 
--  searching multiple fields
--  set filtering operators
+-  allows searching multiple fields
+-  supports pagination
+-  set filtering operators for each field
 -  set fixed filters
--  pass in lists as fiters
-
-This is a work in progress!
+-  use lists of values for filters
 
 Installation
 ------------
@@ -31,9 +31,10 @@ From source:
 Usage
 -----
 
-**Important**: API has changed since v. 0.1.0, in particular filters are
-now configured in their own class derived from
-``searchlist_views.filters.BaseFilter``.
+**Important**: until v.1.0 API might be subject to changes. Please take
+a look at the `changelog <#changelog>`__ and don't hesitate to mail us
+or open an issue if you have troubles migration from an older version.
+Sorry about this!.
 
 SearchListView
 ~~~~~~~~~~~~~~
@@ -90,15 +91,15 @@ views.py
 
     from .model import Actor
     from .forms import ActorSearchForm
-    from searchlist_views.search import SearchListView
-    from searchlist_views.filters import BaseFilter
+    from search_views.search import SearchListView
+    from search_views.filters import BaseFilter
 
     class ActorsFilter(BaseFilter):
         search_fields = {
             'search_text' : ['name', 'surname'],
             'search_age_exact' : { 'operator' : '__exact', 'fields' : ['age'] },
             'search_age_min' : { 'operator' : '__gte', 'fields' : ['age'] },
-            'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },
+            'search_age_max' : { 'operator' : '__lte', 'fields' : ['age'] },            
 
         }
 
@@ -132,13 +133,13 @@ view template "actors/actors\_list.html":
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Age</th>
+                <th>Age</th>        
             </tr>
             {% for object in object_list %}
             <tr>
                 <td>{{object.name}}</td>
                 <td>{{object.surname}}</td>
-                <td>{{object.age}}</td>
+                <td>{{object.age}}</td>  
             </tr>
             {% endfor %}
         </table>
@@ -150,6 +151,20 @@ view template "actors/actors\_list.html":
     </div>
 
     {% endblock %}
+
+Changelog
+---------
+
+0.2.0
+~~~~~
+
+-  filters are now configured in their own class derived from
+   ``search_views.filters.BaseFilter``.
+
+0.3.0
+~~~~~
+
+-  Renamed main package from ``searchlist_views`` to ``search_views``.
 
 License and development
 =======================

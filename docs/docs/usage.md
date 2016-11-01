@@ -1,8 +1,8 @@
 # Usage
 
-## Using `searchlist_views.views.SearchListView`
+## Using `search_views.views.SearchListView`
 
-`searchlist_views.views.SearchListView` is a class-based view derived from [django.views.generic.list.ListView](https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-display/#django.views.generic.list.ListView) that you can inherit in your application's views to get the search functionalities.
+`search_views.views.SearchListView` is a class-based view derived from [django.views.generic.list.ListView](https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-display/#django.views.generic.list.ListView) that you can inherit in your application's views to get the search functionalities.
 
  Your views, as a descendant of `django.views.generic.list.ListView`, must be configured by providing
  `template_name`, a `model` or `queryset` property or a `get_queryset_method`. See the related django docs for more details.
@@ -10,14 +10,14 @@
 You will also need to define:
 
 - the `form_class` attribute, that specifies the class derived from `django.forms.Form` that will be used to get a form instance, that will available via the `form` context variable in your template.
-- the `filter_class` attribute, that specifies the class derived from `searchlist_views.filters.BaseFilter` used to map the form fields to the model properties and lookup methods.
+- the `filter_class` attribute, that specifies the class derived from `search_views.filters.BaseFilter` used to map the form fields to the model properties and lookup methods.
 
 Here's an example definition of a view:
 
 ```
 from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
+from search_views.search import SearchListView
 
 class ActorsSearchList(SearchListView):
     # regular django.views.generic.list.ListView configuration
@@ -32,9 +32,9 @@ class ActorsSearchList(SearchListView):
 
 The `filter_class` is resposible of mapping the fields defined in your form to  
 filter that will be performed on the base queryset. This is done by providing a subclass
-of `searchlist_views.filters.BaseFilter`.
+of `search_views.filters.BaseFilter`.
 
-## class `searchlist_views.filters.BaseFilter`
+## class `search_views.filters.BaseFilter`
 
 This class is used to configure the main view class, by means of its `search_fields` attribute,
 that must be set to a python dictionary, where:
@@ -59,8 +59,8 @@ Let's explore all the options. (TBW)
 ```
 from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
-from searchlist_views.filters import BaseFilter
+from search_views.search import SearchListView
+from search_views.filters import BaseFilter
 
 class ActorsFilter(BaseFilter):
     search_fields = {

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from searchlist_views.views import SearchListView
-from searchlist_views.filters import BaseFilter
+from search_views.views import SearchListView
+from search_views.filters import BaseFilter
 from .models import Actor
 from .forms import SearchActorForm
 

@@ -15,5 +15,5 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=searchlist_views',
+    '--cover-package=search_views',
 ]

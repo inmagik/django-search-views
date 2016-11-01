@@ -18,7 +18,6 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 lib_path = os.path.abspath(os.path.join(BASE_DIR, '../'))
-print lib_path
 sys.path.append(lib_path)
 
 

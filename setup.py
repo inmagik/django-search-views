@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-search-views',
-    version='0.2.0',
+    version='0.3.0',
     url='https://github.com/inmagik/django-search-views',
     install_requires=[
         'Django >=1.8',
@@ -12,10 +12,10 @@ setup(
     license="MIT",
     author="Mauro Bianchi",
     author_email="bianchimro@gmail.com",
-    packages=['searchlist_views'],
-    package_dir={'searchlist_views': 'searchlist_views'},
+    packages=['search_views'],
+    package_dir={'search_views': 'search_views'},
     include_package_data = True,    # include everything in source control
-    package_data={'searchlist_views': ['*.py','contrib/*.py','tests/*.py','tests/templates/*.html', 'tests/templates/extra_views/*.html']},
+    package_data={'search_views': ['*.py','contrib/*.py','tests/*.py','tests/templates/*.html', 'tests/templates/extra_views/*.html']},
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',

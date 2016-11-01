@@ -27,7 +27,9 @@ From source:
 
 ## Usage
 
-**Important**: API has changed since v. 0.1.0, in particular filters are now configured in their own class derived from `searchlist_views.filters.BaseFilter`.
+**Important**: until v.1.0 API might be subject to changes. Please take a look at the [changelog]
+and don't hesitate to mail us or open an issue if you have troubles migration from an older version.
+Sorry about this!.
 
 ### SearchListView
 tbw
@@ -82,8 +84,8 @@ views.py
 
     from .model import Actor
     from .forms import ActorSearchForm
-    from searchlist_views.search import SearchListView
-    from searchlist_views.filters import BaseFilter
+    from search_views.search import SearchListView
+    from search_views.filters import BaseFilter
 
     class ActorsFilter(BaseFilter):
         search_fields = {
@@ -141,6 +143,19 @@ view template "actors/actors_list.html":
     </div>
 
     {% endblock %}
+
+
+
+
+## Changelog
+
+### 0.2.0
+
+* filters are now configured in their own class derived from `search_views.filters.BaseFilter`.
+
+### 0.3.0
+
+* Renamed main package from `searchlist_views` to `search_views`.
 
 
 

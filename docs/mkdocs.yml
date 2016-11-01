@@ -3,4 +3,5 @@ pages:
   - django-search-views: index.md
   - Installation: installation.md
   - Usage: usage.md
+  - Changelog: changelog.md
 theme: readthedocs
