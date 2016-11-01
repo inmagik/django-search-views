@@ -10,4 +10,5 @@ docs/_build/
 dist/
 nosetests.xml
 env/*
+env3/*
 *.sqlite3
