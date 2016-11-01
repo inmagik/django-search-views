@@ -1,6 +1,8 @@
 django-search-views
 ===================
 
+|Build Status|
+
 This package provides a Django class-based view used for showing a list
 of objects with a search form. Full documentation at
 (http://inmagik.github.io/django-search-views/).
@@ -178,3 +180,6 @@ This project is MIT licensed and maintained by
 `Inmagik <https://www.inmagik.com>`__, suggestions and pull requests are
 welcome via the `Github project
 page <https://github.com/inmagik/django-search-views/issues>`__
+
+.. |Build Status| image:: https://travis-ci.org/inmagik/django-search-views.svg?branch=master
+   :target: https://travis-ci.org/inmagik/django-search-views
