@@ -95,9 +95,9 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
             self.filtering = True
             try:
                 self.object_list = self.object_list.filter(search_query)
-            except ValueError, e:
+            except ValueError as e:
                 search_errors.append(get_exception_error_msg(e))
-            except ValidationError, e:
+            except ValidationError as e:
                 search_errors.append(get_exception_error_msg(e))
 
 
