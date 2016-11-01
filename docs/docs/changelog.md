@@ -7,3 +7,8 @@
 ## 0.3.0
 
 * Renamed main package from `searchlist_views` to `search_views`.
+
+
+## 0.3.1
+
+* Python 3 compatibility

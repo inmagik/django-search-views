@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-search-views',
-    version='0.3.0',
+    version='0.3.1',
     url='https://github.com/inmagik/django-search-views',
     install_requires=[
         'Django >=1.8',

@@ -157,6 +157,9 @@ view template "actors/actors_list.html":
 
 * Renamed main package from `searchlist_views` to `search_views`.
 
+### 0.3.1
+
+* Python 3 compatibility
 
 
 # License and development
