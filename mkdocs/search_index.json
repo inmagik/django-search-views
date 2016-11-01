@@ -57,7 +57,7 @@
         }, 
         {
             "location": "/changelog/", 
-            "text": "Changelog\n\n\n0.2.0\n\n\n\n\nfilters are now configured in their own class derived from \nsearch_views.filters.BaseFilter\n.\n\n\n\n\n0.3.0\n\n\n\n\nRenamed main package from \nsearchlist_views\n to \nsearch_views\n.", 
+            "text": "Changelog\n\n\n0.2.0\n\n\n\n\nfilters are now configured in their own class derived from \nsearch_views.filters.BaseFilter\n.\n\n\n\n\n0.3.0\n\n\n\n\nRenamed main package from \nsearchlist_views\n to \nsearch_views\n.\n\n\n\n\n0.3.1\n\n\n\n\nPython 3 compatibility", 
             "title": "Changelog"
         }, 
         {
@@ -74,6 +74,11 @@
             "location": "/changelog/#030", 
             "text": "Renamed main package from  searchlist_views  to  search_views .", 
             "title": "0.3.0"
+        }, 
+        {
+            "location": "/changelog/#031", 
+            "text": "Python 3 compatibility", 
+            "title": "0.3.1"
         }
     ]
 }
