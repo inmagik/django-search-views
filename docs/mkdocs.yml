@@ -1,6 +1,6 @@
 site_name: django-search-views
 pages:
-  - django-searchlist-views: index.md
+  - django-search-views: index.md
   - Installation: installation.md
   - Usage: usage.md
 theme: readthedocs
