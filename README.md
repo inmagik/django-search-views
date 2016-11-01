@@ -27,7 +27,7 @@ From source:
 
 ## Usage
 
-**Important**: until v.1.0 API might be subject to changes. Please take a look at the [changelog][]
+**Important**: until v.1.0 API might be subject to changes. Please take a look at the [changelog](#changelog)
 and don't hesitate to mail us or open an issue if you have troubles migration from an older version.
 Sorry about this!.
 
