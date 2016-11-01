@@ -76,12 +76,19 @@
             
                 <li class="toctree-l3"><a href="#usage">Usage</a></li>
                 
-                    <li><a class="toctree-l4" href="#using-searchlist_viewsviewssearchlistview">Using searchlist_views.views.SearchListView</a></li>
+                    <li><a class="toctree-l4" href="#using-search_viewsviewssearchlistview">Using search_views.views.SearchListView</a></li>
                 
-                    <li><a class="toctree-l4" href="#class-searchlist_viewsfiltersbasefilter">class searchlist_views.filters.BaseFilter</a></li>
+                    <li><a class="toctree-l4" href="#class-search_viewsfiltersbasefilter">class search_views.filters.BaseFilter</a></li>
                 
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../changelog/">Changelog</a>
         
     </li>
 <li>
@@ -119,19 +126,19 @@
             <div class="section">
               
                 <h1 id="usage">Usage</h1>
-<h2 id="using-searchlist_viewsviewssearchlistview">Using <code>searchlist_views.views.SearchListView</code></h2>
-<p><code>searchlist_views.views.SearchListView</code> is a class-based view derived from <a href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-display/#django.views.generic.list.ListView">django.views.generic.list.ListView</a> that you can inherit in your application's views to get the search functionalities.</p>
+<h2 id="using-search_viewsviewssearchlistview">Using <code>search_views.views.SearchListView</code></h2>
+<p><code>search_views.views.SearchListView</code> is a class-based view derived from <a href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-display/#django.views.generic.list.ListView">django.views.generic.list.ListView</a> that you can inherit in your application's views to get the search functionalities.</p>
 <p>Your views, as a descendant of <code>django.views.generic.list.ListView</code>, must be configured by providing
  <code>template_name</code>, a <code>model</code> or <code>queryset</code> property or a <code>get_queryset_method</code>. See the related django docs for more details.</p>
 <p>You will also need to define:</p>
 <ul>
 <li>the <code>form_class</code> attribute, that specifies the class derived from <code>django.forms.Form</code> that will be used to get a form instance, that will available via the <code>form</code> context variable in your template.</li>
-<li>the <code>filter_class</code> attribute, that specifies the class derived from <code>searchlist_views.filters.BaseFilter</code> used to map the form fields to the model properties and lookup methods.</li>
+<li>the <code>filter_class</code> attribute, that specifies the class derived from <code>search_views.filters.BaseFilter</code> used to map the form fields to the model properties and lookup methods.</li>
 </ul>
 <p>Here's an example definition of a view:</p>
 <pre><code>from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
+from search_views.search import SearchListView
 
 class ActorsSearchList(SearchListView):
     # regular django.views.generic.list.ListView configuration
@@ -146,8 +153,8 @@ class ActorsSearchList(SearchListView):
 
 <p>The <code>filter_class</code> is resposible of mapping the fields defined in your form to<br />
 filter that will be performed on the base queryset. This is done by providing a subclass
-of <code>searchlist_views.filters.BaseFilter</code>.</p>
-<h2 id="class-searchlist_viewsfiltersbasefilter">class <code>searchlist_views.filters.BaseFilter</code></h2>
+of <code>search_views.filters.BaseFilter</code>.</p>
+<h2 id="class-search_viewsfiltersbasefilter">class <code>search_views.filters.BaseFilter</code></h2>
 <p>This class is used to configure the main view class, by means of its <code>search_fields</code> attribute,
 that must be set to a python dictionary, where:</p>
 <ul>
@@ -176,8 +183,8 @@ if a search field is defined for more than one field, are put together with OR.<
 <p>Let's explore all the options. (TBW)</p>
 <pre><code>from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
-from searchlist_views.filters import BaseFilter
+from search_views.search import SearchListView
+from search_views.filters import BaseFilter
 
 class ActorsFilter(BaseFilter):
     search_fields = {
@@ -200,6 +207,8 @@ class ActorsSearchList(SearchListView):
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -230,6 +239,8 @@ class ActorsSearchList(SearchListView):
       
         <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

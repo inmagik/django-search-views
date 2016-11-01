@@ -89,6 +89,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="changelog/">Changelog</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -130,7 +137,7 @@
 <li>pagination</li>
 <li>set filtering operators</li>
 <li>set fixed filters</li>
-<li>pass in lists as fiters</li>
+<li>pass in lists as filters</li>
 </ul>
 <h2 id="a-quick-example">A quick example.</h2>
 <p>Let's suppose we want to show a searchable list of actors.</p>
@@ -169,16 +176,16 @@ class ActorSearchForm(forms.Form):
     )
 </code></pre>
 
-<p>Now, using <code>django-searchlist-views</code> API we can:</p>
+<p>Now, using <code>django-search-views</code> API we can:</p>
 <ul>
 <li>define the mapping between the form fields and the model fields, and the lookups
-used for searching model instances. This is done by writing a subclass of <code>searchlist_views.filters.BaseFilter</code></li>
-<li>define the actual view based on <code>searchlist_views.views.SearchListView</code> class.</li>
+used for searching model instances. This is done by writing a subclass of <code>search_views.filters.BaseFilter</code></li>
+<li>define the actual view based on <code>search_views.views.SearchListView</code> class.</li>
 </ul>
 <pre><code>from .models import Actor
 from .forms import ActorSearchForm
-from searchlist_views.search import SearchListView
-from searchlist_views.filters import BaseFilter
+from search_views.search import SearchListView
+from search_views.filters import BaseFilter
 
 class ActorsFilter(BaseFilter):
     search_fields = {
@@ -247,5 +254,5 @@ class ActorsSearchList(SearchListView):
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-11-01 18:22:28.815424
+Build Date UTC : 2016-11-01 18:47:21.231421
 -->

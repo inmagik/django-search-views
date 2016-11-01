@@ -8,26 +8,30 @@
   
   
   
-  <title>django-search-views</title>
+  <title>Changelog - django-search-views</title>
   
 
-  <link rel="shortcut icon" href="./img/favicon.ico">
+  <link rel="shortcut icon" href="../img/favicon.ico">
 
   
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
 
   
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script>
-  <script src="./js/theme.js"></script>
-  <script>var base_url = '.';</script>
-  <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Changelog";
+    var mkdocs_page_input_path = "changelog.md";
+    var mkdocs_page_url = "/changelog/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
 
   
 </head>
@@ -39,9 +43,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> django-search-views</a>
+        <a href=".." class="icon icon-home"> django-search-views</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
@@ -52,28 +56,39 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href=".">django-search-views</a>
+        <a class="" href="..">django-search-views</a>
         
     </li>
 <li>
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="installation/">Installation</a>
+        <a class="" href="../installation/">Installation</a>
         
     </li>
 <li>
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="usage/">Usage</a>
+        <a class="" href="../usage/">Usage</a>
         
     </li>
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="changelog/">Changelog</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Changelog</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#changelog">Changelog</a></li>
+                
+                    <li><a class="toctree-l4" href="#020">0.2.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#030">0.3.0</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -88,7 +103,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">django-search-views</a>
+        <a href="..">django-search-views</a>
       </nav>
 
       
@@ -96,9 +111,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
+      
     
+    <li>Changelog</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -108,22 +125,26 @@
           <div role="main">
             <div class="section">
               
-
-  <h1 id="search">Search Results</h1>
-
-  <form id="content_search" action="search.html">
-    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-    <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search the Docs" autocomplete="off" autofocus>
-  </form>
-
-  <div id="mkdocs-search-results">
-    Sorry, page not found.
-  </div>
-
-
+                <h1 id="changelog">Changelog</h1>
+<h2 id="020">0.2.0</h2>
+<ul>
+<li>filters are now configured in their own class derived from <code>search_views.filters.BaseFilter</code>.</li>
+</ul>
+<h2 id="030">0.3.0</h2>
+<ul>
+<li>Renamed main package from <code>searchlist_views</code> to <code>search_views</code>.</li>
+</ul>
+              
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../usage/" class="btn btn-neutral" title="Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -146,6 +167,8 @@
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../usage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
