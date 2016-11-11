@@ -12,3 +12,8 @@
 ## 0.3.1
 
 * Python 3 compatibility
+
+
+## 0.3.2
+
+* `total_count` property on `SearchListView`

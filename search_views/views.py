@@ -19,6 +19,7 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
     order_field = None
     allowed_orderings = []
     max_num_orderings = 3
+    total_count = True
 
     # Allows prefetching related fields for displaying purposes (does not influence queries)
     prefetch_fields = []
@@ -127,6 +128,10 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
                         % {'class_name': self.__class__.__name__})
 
         context = self.get_context_data(object_list=self.object_list, form=self.form)
+        if self.total_count:
+            context['total_count'] = self.get_queryset().count()
+
+
         if self.prefetch_fields:
             # Apply prefetch after pagination - otherwise it will prefetch all the related rows
             # Note: prefetch uses in (id, id, id...)
