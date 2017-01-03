@@ -19,9 +19,10 @@
         </div>
 
       </div>
-
+      <form action="" method="POST">
       <table class="table table-striped">
         <tr>
+          <th>Selection</th>
           <th>
             Name
           </th>
@@ -32,6 +33,13 @@
         {% for actor in object_list %}
         <tr>
           <td>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"  name="selection"  value="{{ispezione.pk}}"/>
+              </label>
+            </div>
+          </td>
+          <td>
             {{actor.name}} {{actor.surname}}
           </td>
           <td>
@@ -41,6 +49,22 @@
         {% endfor %}
       </table>
 
+      {% csrf_token %}
+
+      <div class="">
+
+        {{ action_form.as_p }}
+        <button type="submit" class="btn btn-warning btn-sm pull-right">
+          Esegui
+        </button>
+
+      </div>
+    </form>
+
+
+
     </div>
   </body>
+
+  {{action_form.media}}
 </html>
