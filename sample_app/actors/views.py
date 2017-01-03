@@ -18,7 +18,7 @@ class ActorsFilter(BaseFilter):
 class ActorsView(ActionsListMixin, SearchListView):
     model = Actor
     template_name = "actors_list.html"
-
+    
     form_class = SearchActorForm
     filter_class = ActorsFilter
 
