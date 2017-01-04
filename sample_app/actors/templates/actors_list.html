@@ -1,3 +1,4 @@
+{% load search_views %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,6 +21,7 @@
 
       </div>
       <form action="" method="POST">
+
       <table class="table table-striped">
         <tr>
           <th>Selection</th>
@@ -30,12 +32,21 @@
             Age
           </th>
         </tr>
+
         {% for actor in object_list %}
         <tr>
-          <td>
+          <td class="{% if selection_form.record_errors|get_selection_error:actor.pk %}has-error{% endif %}">
             <div class="checkbox">
               <label>
-                <input type="checkbox"  name="selection"  value="{{ispezione.pk}}"/>
+                <input
+                  type="checkbox"
+                  name="actions_selection"
+                  value="{{actor.pk}}"
+                  {% if actor.pk|stringformat:"i" in selection_form_pks %}checked="checked"{% endif %}/>
+
+                  {% if selection_form.record_errors|get_selection_error:actor.pk %}
+                    {{selection_form.record_errors|get_selection_error:actor.pk}}
+                  {% endif %}
               </label>
             </div>
           </td>
@@ -52,7 +63,6 @@
       {% csrf_token %}
 
       <div class="">
-
         {{ action_form.as_p }}
         <button type="submit" class="btn btn-warning btn-sm pull-right">
           Esegui

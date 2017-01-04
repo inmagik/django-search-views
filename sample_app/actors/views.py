@@ -18,7 +18,7 @@ class ActorsFilter(BaseFilter):
 class ActorsView(ActionsListMixin, SearchListView):
     model = Actor
     template_name = "actors_list.html"
-    
+
     form_class = SearchActorForm
     filter_class = ActorsFilter
 
@@ -26,13 +26,11 @@ class ActorsView(ActionsListMixin, SearchListView):
         ("set_actor_age", "Set age", ['age'])
     ]
     actions_form_class = ActionsForm
-    action_fields_wrapper = "p"
+    actions_fields_wrapper = "p"
 
     def after_post(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
 
     def set_actor_age(self, record, form_data):
-        #record.gruppo_ispettori = form_data["gruppo_ispettori"]
         record.age = form_data['age']
-        print record
-        #record.save()
+        record.save()
