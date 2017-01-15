@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, FormMixin
 from django.views.generic.list import ListView, BaseListView
 from django.views.generic.base import TemplateResponseMixin
+from django.forms import ValidationError
 from .filters import BaseFilter
 
 
