@@ -75,26 +75,16 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
 
         return kwargs
 
-
-
-    def get(self, request, *args, **kwargs):
-
-        search_errors_fields = []
-        search_errors = []
-
-        # From ProcessFormMixin
-        form_class = self.get_form_class()
-        if form_class:
-            self.form = self.get_form(form_class)
-        else:
-            self.form = None
-
-        # From BaseListView
-        self.object_list = self.get_queryset()
+    def get_search_query(self, request):
         search_query = self.filter_class.build_q(request.GET, request)
+        return search_query
+
+    def get_object_list(self, request):
+        # From BaseListView
+        search_query = self.get_search_query(request)
+        self.object_list = self.get_queryset()
 
         if search_query:
-            self.filtering = True
             try:
                 self.object_list = self.object_list.filter(search_query)
             except ValueError as e:
@@ -113,6 +103,25 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
 
         if self.apply_distinct:
             self.object_list = self.object_list.distinct()
+
+
+
+    def get(self, request, *args, **kwargs):
+
+        search_errors_fields = []
+        search_errors = []
+
+        # From ProcessFormMixin
+        form_class = self.get_form_class()
+        if form_class:
+            self.form = self.get_form(form_class)
+        else:
+            self.form = None
+
+        self.object_list = self.get_object_list(request)
+        search_query = self.get_search_query(request)
+        if search_query:
+            self.filtering = True
 
         allow_empty = self.get_allow_empty()
         if not allow_empty:
