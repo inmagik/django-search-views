@@ -82,11 +82,11 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
     def get_object_list(self, request):
         # From BaseListView
         search_query = self.get_search_query(request)
-        self.object_list = self.get_queryset()
+        object_list = self.get_queryset()
 
         if search_query:
             try:
-                self.object_list = self.object_list.filter(search_query)
+                object_list = object_list.filter(search_query)
             except ValueError as e:
                 search_errors.append(get_exception_error_msg(e))
             except ValidationError as e:
@@ -97,14 +97,15 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
             order_by = request.GET[self.order_field]
             order_by_fields = order_by.split(",")
             order_by_fields = [x for x in order_by_fields if x.replace("-","") in [field for [field, caption] in self.allowed_orderings]]
-            self.object_list = self.object_list.order_by(*order_by_fields)
+            object_list = object_list.order_by(*order_by_fields)
         else:
             order_by_fields = []
 
         if self.apply_distinct:
-            self.object_list = self.object_list.distinct()
+            object_list = object_list.distinct()
 
-
+        return object_list
+        
 
     def get(self, request, *args, **kwargs):
 
