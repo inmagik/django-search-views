@@ -79,9 +79,21 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
         search_query = self.filter_class.build_q(request.GET, request)
         return search_query
 
-    def get_object_list(self, request):
+    def get_order_by_fields(self, request):
+        if self.order_field and self.order_field in request.GET and request.GET[self.order_field]:
+            order_by = request.GET[self.order_field]
+            order_by_fields = order_by.split(",")
+            #order_by_fields = [x for x in order_by_fields if x.replace("-","") in [field for [field, caption] in self.allowed_orderings]]
+            order_by_fields = [x for x in order_by_fields]
+        else:
+            order_by_fields = []
+        print 100, order_by_fields, self.order_field, self.order_field in request.GET, request.GET[self.order_field]
+        return order_by_fields
+
+    def get_object_list(self, request, search_errors=None):
         # From BaseListView
         search_query = self.get_search_query(request)
+        order_by_fields = self.get_order_by_fields(request)
         object_list = self.get_queryset()
 
         if search_query:
@@ -92,20 +104,15 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
             except ValidationError as e:
                 search_errors.append(get_exception_error_msg(e))
 
-
-        if self.order_field and self.order_field in request.GET and request.GET[self.order_field]:
-            order_by = request.GET[self.order_field]
-            order_by_fields = order_by.split(",")
-            order_by_fields = [x for x in order_by_fields if x.replace("-","") in [field for [field, caption] in self.allowed_orderings]]
+        if order_by_fields:
             object_list = object_list.order_by(*order_by_fields)
-        else:
-            order_by_fields = []
+
 
         if self.apply_distinct:
             object_list = object_list.distinct()
 
         return object_list
-        
+
 
     def get(self, request, *args, **kwargs):
 
@@ -119,7 +126,7 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
         else:
             self.form = None
 
-        self.object_list = self.get_object_list(request)
+        self.object_list = self.get_object_list(request, search_errors=search_errors)
         search_query = self.get_search_query(request)
         if search_query:
             self.filtering = True
@@ -151,6 +158,8 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
         context['filtering'] = self.filtering
         context['search_errors'] = search_errors
         context['search_errors_fields'] = search_errors_fields
+
+        order_by_fields = self.get_order_by_fields(request)
         context['order_by_fields'] = order_by_fields
 
         #also passing order_field and allowed_orderings
