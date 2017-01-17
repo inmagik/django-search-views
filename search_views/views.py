@@ -87,7 +87,6 @@ class SearchListView(BaseListView, FormMixin, TemplateResponseMixin):
             order_by_fields = [x for x in order_by_fields]
         else:
             order_by_fields = []
-        print 100, order_by_fields, self.order_field, self.order_field in request.GET, request.GET[self.order_field]
         return order_by_fields
 
     def get_object_list(self, request, search_errors=None):
